@@ -33,7 +33,7 @@ public class KDTree2D {
     public int size()     { return size; }
     public int height()   { return height; }
 
-    /** Chave para ordenar por eixo usando PL.BST */
+    // Chave para ordenar por eixo usando PL.BST
     private static final class AxisKey implements Comparable<AxisKey> {
         final Node n;
         final boolean byLat;

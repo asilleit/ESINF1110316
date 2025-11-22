@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * @author Adriano
- * Main para demonstrar USEI06, USEI07 e US08 (sem LatLonTrees).
+ * Main para demonstrar USEI06, USEI07 e US08.
  */
 public class Main {
 
@@ -93,7 +93,7 @@ public class Main {
 
         System.out.println("Complexidade USEI06:");
         System.out.println("- TZ group: hash avg O(1) + ordenacao por pais em O(P log P)");
-        System.out.println("- Lat/Lon via KD (igualdade): range query com limites iguais -> pruning + visita local\n");
+        System.out.println("- Lat/Lon via KD (igualdade): range query com limites iguais -> poda + visita local\n");
     }
 
     /* ----------------------------- USEI07 ----------------------------- */
@@ -137,6 +137,6 @@ public class Main {
         System.out.println("ALL 50-52 lat, 4-9 lon -> " + q4.size());
 
         System.out.println("Complexidade US08:");
-        System.out.println("- Range KD: O(log n + k) tipico (k = resultados), com pruning por eixo\n");
+        System.out.println("- Range KD: O(log n + k) tipico (k = resultados), com poda por eixo\n");
     }
 }

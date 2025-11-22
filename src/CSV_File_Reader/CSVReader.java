@@ -1,14 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package CSV_File_Reader;
 
 import Model.Station;
 import java.io.*;
 import java.util.*;
 
+/**
+ *
+ * @author Adriano
+ */
+
 public class CSVReader {
+    
+     public static final double MAX_LATITUDE = 90.0;
+    public static final double MIN_LATITUDE = -90.0;
+    public static final double MAX_LONGITUDE = 180.0;
+    public static final double MIN_LONGITUDE = -180.0;
+    
     public List<Station> readStations(String filePath) throws IOException {
         List<Station> stations = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -31,7 +38,7 @@ public class CSVReader {
 
     private Station parse(String line) {
         List<String> f = split(line);
-        if (f.size() < 9) throw new IllegalArgumentException("menos colunas");
+        if (f.size() < 9) throw new IllegalArgumentException("The file does not contain the required columns. (9)");
         String country=f.get(0).trim();
         String tz     = cleanTZ(f.get(1));
         String tzG    = clean(f.get(2));
@@ -55,8 +62,8 @@ public class CSVReader {
         if (s.getName()==null || s.getName().isEmpty()) return false;
         if (s.getCountry()==null || s.getCountry().isEmpty()) return false;
         if (s.getTimeZoneGroup()==null || s.getTimeZoneGroup().isEmpty()) return false;
-        if (s.getLatitude() < -90 || s.getLatitude() > 90) return false;
-        if (s.getLongitude() < -180 || s.getLongitude() > 180) return false;
+        if (s.getLatitude() < MIN_LATITUDE || s.getLatitude() > MAX_LATITUDE) return false;
+        if (s.getLongitude() < MIN_LONGITUDE || s.getLongitude() > MAX_LONGITUDE) return false;
         return true;
     }
 

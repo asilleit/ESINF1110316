@@ -17,7 +17,7 @@ import java.util.List;
  *   - is_main_station (Boolean, null = ignorar)
  *   - country ("PT","ES",... ou "all"/null = ignorar)
  *
- * Complexidade típica: O(log n + k) com pruning (k = nº resultados).
+ * Complexidade típica: O(log n + k) com poda (k = nº resultados).
  */
 public class GeoQueries {
 
@@ -68,7 +68,7 @@ public class GeoQueries {
             }
         }
 
-        // 2) Pruning por eixo
+        // 2) Poda por eixo
         if (n.splitByLat) {
             // comparar pelo LATITUDE
             boolean goLeft  = latMin <= n.lat; // retângulo estende-se à esquerda do plano
